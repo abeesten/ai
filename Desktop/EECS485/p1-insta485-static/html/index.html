@@ -1,17 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% block head %}
     <link rel="stylesheet" href="style.css" />
-    <title>{% block title %}{% endblock %} - My Webpage</title>
-    {% endblock %}
+    <title>Insta485 feed</title>
 </head>
 <body>
-    <div id="content">{% block content %}Hello World!{% endblock %}</div>
-    <div id="footer">
-        {% block footer %}
-        &copy; Copyright 2008 by <a href="http://domain.invalid/">you</a>.
-        {% endblock %}
+	<div class="header">
+		<div class="home"><a href="/">Home</a></div>
+		<div class="explore"><a href="/explore/">Explore</a></div>
+		<div class="user-page"><a href="/u/awdeorio/">awdeorio</a></div>
+	</div>
+    <div class="content">
+		<div class="post">
+			<div class="image-name-time">
+				<a href="/u/awdeorio/"><img alt="image of Andrew Deorio" src="/uploads/e1a7c5c32973862ee15173b0259e3efdb6a391af.jpg" width="10px" height="10px"></a>
+				<div class="name-timestamp">
+					<a href="/u/awdeorio/">awdeorio</a>
+					<a href="/p/3/">10 minutes ago</a>
+				</div>
+			</div>
+			<div class="big-picture">
+				<a href="/p/3/"><img src="/uploads/9887e06812ef434d291e4936417d125cd594b38a.jpg"></a>
+			</div>
+			<div class="likes">
+				<p>1 like</p>
+			</div>
+			<div class="comments">
+				<p><a href="/u/awdeorio/">awdeorio</a> #chickensofinstagram</p>
+				<p><a href="/u/jflinn/">jflinn</a> I &lt;3 chickens</p>
+				<p><a href="/u/michjc/">michjc</a> Cute overload!</p>
+			</div>
+		</div>
+		<div class="post">
+			<div class="image-name-time">
+				<a href="/u/jflinn/"><img alt="image of J Flinn" src="/uploads/505083b8b56c97429a728b68f31b0b2a089e5113.jpg" width="10px" height="10px"></a>
+				<div class="name-timestamp">
+					<a href="/u/jflinn/">jflinn</a>
+					<a href="/p/2/">4 hours ago</a>
+				</div>
+			</div>
+			<div class="big-picture">
+				<a href="/p/2/"><img src="/uploads/ad7790405c539894d25ab8dcf0b79eed3341e109.jpg"></a>
+			</div>
+			<div class="likes">
+				<p>2 likes</p>
+			</div>
+			<div class="comments">
+				<p><a href="/u/awdeorio/">awdeorio</a> Sick #crossword</p>
+			</div>
+		</div>
+		</div>
+    </div>
+    <div class="post">
+			<div class="image-name-time">
+				<a href="/u/awdeorio/"><img alt="image of Andrew Deorio" src="/uploads/e1a7c5c32973862ee15173b0259e3efdb6a391af.jpg" width="10px" height="10px"></a>
+				<div class="name-timestamp">
+					<a href="/u/awdeorio/">awdeorio</a>
+					<a href="/p/1/">a day ago</a>
+				</div>
+			</div>
+			<div class="big-picture">
+				<a href="/p/1/"><img src="/uploads/122a7d27ca1d7420a1072f695d9290fad4501a41.jpg"></a>
+			</div>
+			<div class="likes">
+				<p>3 likes</p>
+			</div>
+			<div class="comments">
+				<p><a href="/u/jflinn/">jflinn</a> Walking the plank #chickensofinstagram</p>
+				<p><a href="/u/awdeorio/">awdeorio</a> This was after trying to teach them to do a #crossword</p>
+			</div>
+		</div>
+    <div class="footer">
     </div>
 </body>
 </html>
