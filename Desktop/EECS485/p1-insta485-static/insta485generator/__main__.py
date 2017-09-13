@@ -1,43 +1,55 @@
 """Build static HTML site from directory of HTML templates and plain files."""
 
-import click
-import jinja2
 import json
 import os
 import errno
+import click
+import jinja2
 
 
-#Reads JSON file and puts it somewhere(haven't decided)
-def readJSON(input_dir):
+def __do_jinja__(input_dir, template_type, context):
+    #Nothing yet
+    template_env = jinja2.Environment(
+        loader=jinja2.FileSystemLoader(input_dir + '/templates'),
+        autoescape=jinja2.select_autoescape(['html', 'xml']),
+    )
+    env = jinja2.Environment(loader=jinja2.FileSystemLoader(input_dir + '/templates'))
+    template = env.get_template(template_type)
+    html_string = template.render(context)
+    return html_string
+
+
+# Reads JSON file and puts it somewhere(haven't decided)
+def __read_json__(input_dir):
     with open(input_dir + '/config.json', 'r') as myfile:
-        jsonObject=json.load(myfile)
-    return jsonObject
-      
+        json_object = json.load(myfile)
+    return json_object
 
-    
 
-#Does the writing into a new file.
-def newFiles(jsonObject, input_dir):    #make list of urls
-    urls = [i['url'] for i in jsonObject]
-    for url in urls:
-        outPath = (input_dir + '/html' + url)
-        print(outPath)
-        if not os.path.exists(outPath):
-            os.makedirs(outPath)
-
-        with open(outPath + 'index.html', 'w+') as outputFile:
-            print('hello', file=outputFile, end="")
+# Does the writing into a new file.
+def __make_files__(json_object, input_dir):
+    # make list of urls
+    #urls = [i['url'] for i in json_object]
+    for index in (json_object):
+        out_path = (input_dir + '/html' + index['url'])
+        if not os.path.exists(out_path):
+            os.makedirs(out_path)
+        template_html_string = __do_jinja__(input_dir, index['template'], index['context'])
+        if os.path.exists(out_path + 'index.html'):
+            print('Error: output directory already contains files: ' + out_path + 'index.html')
+        with open(out_path + 'index.html', 'w+') as output_file:
+            print(template_html_string, file=output_file, end="")
+            
 
 
 @click.command()
-@click.option('-v','-verbose', is_flag=True, help='Print more output.(still under construction)')
+@click.option('-v', '-verbose', is_flag=True,
+              help='Print more output.(still under construction)')
 @click.argument('INPUT_DIR', type=click.Path())
 def main(verbose, input_dir):
     """Templated static website generator."""
-    json = readJSON(input_dir)
-    newFiles(json, input_dir)
-    
-
+    json_object = __read_json__(input_dir)
+    __make_files__(json_object, input_dir)
 
 if __name__ == "__main__":
     main()
