@@ -20,13 +20,13 @@ def readJSON(input_dir):
 def newFiles(jsonObject, input_dir):    #make list of urls
     urls = [i['url'] for i in jsonObject]
     for url in urls:
-        outPath = (input_dir + '/html' + url + 'index.html')
-        #if not os.path.exists(os.path.dirname(outPath)):
-         #   os.makedirs(os.path.dirname(input_dir + '/html'))
+        outPath = (input_dir + '/html' + url)
+        print(outPath)
+        if not os.path.exists(outPath):
+            os.makedirs(outPath)
 
-        with open(outPath, 'w+') as outputFile:
+        with open(outPath + 'index.html', 'w+') as outputFile:
             print('hello', file=outputFile, end="")
-        #print(outPath)
 
 
 @click.command()
