@@ -1,8 +1,8 @@
 """Build static HTML site from directory of HTML templates and plain files."""
 
 import json
+import shutil
 import os
-import errno
 import click
 import jinja2
 
@@ -25,12 +25,14 @@ def __read_json__(input_dir):
         json_object = json.load(myfile)
     return json_object
 
-
 # Does the writing into a new file.
 def __make_files__(json_object, input_dir):
     # make list of urls
     #urls = [i['url'] for i in json_object]
-    for index in (json_object):
+    static_folder = input_dir + '/static/'
+    dest_folder = input_dir + '/html/'
+    shutil.copytree(static_folder, dest_folder)
+    for index in json_object:
         out_path = (input_dir + '/html' + index['url'])
         if not os.path.exists(out_path):
             os.makedirs(out_path)
@@ -39,7 +41,6 @@ def __make_files__(json_object, input_dir):
             print('Error: output directory already contains files: ' + out_path + 'index.html')
         with open(out_path + 'index.html', 'w+') as output_file:
             print(template_html_string, file=output_file, end="")
-            
 
 
 @click.command()
