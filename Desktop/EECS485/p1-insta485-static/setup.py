@@ -1,6 +1,4 @@
-"""
-EECS 485 project 1 static site generator.
-"""
+"""EECS 485 project 1 static site generator."""
 
 from setuptools import setup
 
