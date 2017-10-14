@@ -25,4 +25,6 @@ public:
   string diagram_name;
   vector<DiagramShape> shapes;
   vector<Relation> relations;
-}
+};
+
+#endif
