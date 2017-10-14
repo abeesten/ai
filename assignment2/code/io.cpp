@@ -144,8 +144,6 @@ void readInput(string fileName, vector<Diagram> &diagrams){
         //clear diagram and keep going
         continue;
       }
-      //getShapes(ss);
-      //getRelations(ss);
     }
   }
 }
