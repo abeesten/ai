@@ -11,6 +11,7 @@ using namespace std;
 class DiagramShape;
 
 enum ShapeType {CIRCLE, DOT, SQUARE, RECTANGLE, TRIANGLE, SCC};
+enum SizeType {SMALL, MEDIUM, LARGE};
 
 class DiagramShape {
 public:
@@ -23,11 +24,13 @@ public:
   //y-coordinate of center
   int y;
 
-  //circle or dot radius
-  int radius;
+  //number of size of SCC
+  int numSides;
 
   //shapetype
   ShapeType type;
+
+  SizeType size;
 };
 
 #endif

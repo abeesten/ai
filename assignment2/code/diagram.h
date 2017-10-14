@@ -9,13 +9,14 @@
 
 using namespace std;
 
-enum RelationType {LEFT_OF, RIGHT_OF, ABOVE, BELOW, INSIDE, OVERLAP};
+enum RelationType {LEFT_OF, ABOVE, INSIDE, OVERLAP};
 
 struct Relation {
 public:
-  //stores ids of realted shapes
-  string otherShape_id;
-  RelationType relation_type;
+  //stores ids of related shapes
+  string firstShape;
+  string secondShape;
+  RelationType relationType;
 };
 
 class Diagram;
