@@ -21,7 +21,7 @@ public:
   int x;
 
   //y-coordinate of center
-  int y
+  int y;
 
   //circle or dot radius
   int radius;
